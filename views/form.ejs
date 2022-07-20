@@ -1,0 +1,27 @@
+<%- include('navbar') %>
+
+<section id="form-layout">
+    <form method="POST" action="/form-layout">
+        <div>
+            <label for="username">username</label>
+            <input type="text" name="username"/>
+        </div>
+   
+        <div>
+            <label for="password">password</label>
+            <input type="password" name="password"/>
+        </div>
+
+        <%- callback ? callback.messageConfirmPassword : '' -%>
+
+        <div>
+            <label for="confirm-password">confirm-password</label>
+            <input type="password" name="confirmPassword"/>
+        </div>
+   
+        <button type="submit">Send Data</button>
+      </form>   
+</section>
+
+<%- include('footer') %>
+

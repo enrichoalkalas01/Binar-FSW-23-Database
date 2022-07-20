@@ -15,10 +15,7 @@ var Schema = new Mongoose.Schema({
         type: String,
         require: true,
     },
-
-    firstName: { type: String },
-    lastName: { type: String },
 })
 
-const UserDatabase = Mongoose.model('UserDatabase', Schema)
-module.exports = UserDatabase
+const Users = Mongoose.model('Users', Schema)
+module.exports = Users

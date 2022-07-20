@@ -1,0 +1,20 @@
+
+<footer>
+    <script>
+        async function getData() {
+            try {
+                let resultData = await fetch('/product-api')
+                console.log(resultData)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        // contoh dari callback external / function tambahan external : getData().then()
+        // contoh dari callback internal / function tambahan internal : getData(then() {})
+        // return resultData // undefined / null
+        getData()
+    </script>
+</footer>    
+</body>
+</html>
