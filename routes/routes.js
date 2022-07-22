@@ -3,6 +3,7 @@ const Routes = Express.Router()
 
 // Import Controller
 const LoginController = require('../controller/Login')
+const GameController = require('../controller/Game')
 
 // user process
 Routes.post('/login', LoginController.Login)
@@ -51,5 +52,9 @@ Routes.get('/product-api', (req, res) => {
 Routes.delete('/product', (req, res) => {
     console.log(req.body)
 })
+
+Routes.post('/game-score', GameController.SaveScore)
+Routes.get('/game-score/:id', GameController.GetScore)
+Routes.post('/game-score-test/:id', GameController.TesterGame)
 
 module.exports = Routes

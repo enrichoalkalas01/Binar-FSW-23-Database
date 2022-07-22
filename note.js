@@ -59,7 +59,8 @@
             - draw
             - lose
             - type_player ( bot / user )
-            - level 
+            - level
+            - date & time
 
         npx sequelize-cli model:generate --name game_history --attributes user_id:integer,win:string,draw:string,lose:string,type_player:string,level:integer
 
@@ -79,4 +80,31 @@
         - Membuat Relasi GET for User & Profile ( Login )
         - Simple Verification & Filter Data ( Login & Register )
         - Must use mongodb
+
+
+        - id
+        - user_id
+        - win
+        - draw
+        - lose
+
+        User Play -> Get Point User -> {
+            - user_id
+            - win
+            - draw
+            - lose
+            - type_player ( bot / user )
+            - date & time ( bot / user )
+        } -> Send data with api -> Process With Time Date Now -> Save To Database
+
+
+        # Not Require Type Player
+        username - win - lose - draw - time
+        naruto   -  1  -   0  -  3   - 22 July 2022, 17:00:24 ( Waktu Pas Hasil Bot & User Ditampilkan )
+
+        # Require Type Player
+        username - win - lose - draw - time
+        naruto   -  1  -   0  -  3   - 22 July 2022, 17:00:24 ( Waktu Pas Hasil Bot & User Ditampilkan )
+        bot      -  0  -   1  -  3   - 22 July 2022, 17:00:24 ( Waktu Pas Hasil Bot & User Ditampilkan )
+        
 */

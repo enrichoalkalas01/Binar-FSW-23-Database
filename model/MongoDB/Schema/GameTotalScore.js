@@ -10,5 +10,5 @@ var Schema = new Mongoose.Schema({
     date_time: { type: Date }
 })
 
-const GameHistory = Mongoose.model('GameHistory', Schema)
-module.exports = GameHistory
+const GameTotalScore = Mongoose.model('GameTotalScore', Schema)
+module.exports = GameTotalScore
