@@ -11,7 +11,7 @@ Routes.post('/register', LoginController.Register)
 Routes.post('/sql/register', LoginController.RegisterSql)
 Routes.post('/sql/login', LoginController.LoginSql)
 
-Routes.get('/form-layout', (req, res) => {
+Routes.get('/form-layout', (req, res, next) => {
     res.render('form', { callback: null })
 })
 
@@ -52,6 +52,8 @@ Routes.get('/product-api', (req, res) => {
 Routes.delete('/product', (req, res) => {
     console.log(req.body)
 })
+
+Routes.get('/profile', LoginController.Profile)
 
 Routes.post('/game-score', GameController.SaveScore)
 Routes.get('/game-score/:id', GameController.GetScore)

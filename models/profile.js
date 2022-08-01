@@ -26,5 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Profile',
   });
+
+  Profile.belongsTo('user')
+  
   return Profile;
 };

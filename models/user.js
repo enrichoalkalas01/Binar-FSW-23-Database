@@ -21,5 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'User',
   });
+
+  User.hasOne('profile')
+  
   return User;
 };

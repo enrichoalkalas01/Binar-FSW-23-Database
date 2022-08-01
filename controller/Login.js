@@ -1,5 +1,9 @@
 const { response } = require('express');
 const { Sequelize } = require('sequelize');
+const Cryptr = require('cryptr');
+const SecretKey = 'SecretKey'
+const CryptrConverter = new Cryptr(SecretKey);
+const JWT = require('jsonwebtoken')
 
 // // Import Schema / Model User
 const UserModel = require('../model/MongoDB/Schema/UserSchema');
@@ -19,12 +23,18 @@ exports.Login = async (req, res) => {
             // Check User Exist
             let findUser = await UserModel.findOne({ username: username })
 
-            console.log(findUser)
             if ( !findUser || findUser.length < 0 ) {
                 res.status(400).send({ message: "Wrong username or password", statusCode: 400 })
             } else {
                 // Check Password
-                if ( findUser.password === password ) {
+                if ( CryptrConverter.decrypt(findUser.password) === password ) {
+                    // Create Token Access
+                    let createToken = JWT.sign({
+                        id: findUser._id,
+                        username: findUser.username,
+                        email: findUser.email,
+                    }, SecretKey)
+
                     // Get Data Profile
                     let getProfile = await ProfileModel.findOne({ user_id: findUser._id })
                     res.send({
@@ -34,8 +44,8 @@ exports.Login = async (req, res) => {
                             id: findUser._id,
                             username: findUser.username,
                             email: findUser.email,
-                            token: '0a39mdsakpd93aanlsid',
-                            profile: getProfile
+                            token: createToken,
+                            // profile: getProfile
                         }
                     })
                 } else {
@@ -44,7 +54,8 @@ exports.Login = async (req, res) => {
             }
         } catch (error) {
             console.log(error)
-            res.status(500).send(error.message)
+            // res.status(500).send(error.message)
+            res.status(400).send({ message: 'wrong username / password', statusCode: 400 })
         }
     }
 }
@@ -66,11 +77,13 @@ exports.Register = async (req, res) => {
                     statusCode: 400,
                 })
             } else {
+
                 // Check Each Char Data
                 // Encryption Password
+                let newPasswordPassing = CryptrConverter.encrypt(password)
                 // Send New Data
                 let createUser = await UserModel.create({
-                    username: username, password: password,
+                    username: username, password: newPasswordPassing,
                     email: email
                 })
                 
@@ -136,6 +149,34 @@ exports.LoginSql = (req, res) => {
         console.log(err)
         res.send('failed to get data')
     })
+}
+
+exports.Profile = (req, res) => {
+    let token_bearer = req.headers.authorization
+    let TokenAuth = token_bearer.split(" ")
+
+    if ( TokenAuth[0].toLowerCase() !== 'bearer' ) {
+        res.status(400).send({ message: 'Invalid Token Type' })
+    } else {
+        JWT.verify(TokenAuth[1], SecretKey, async function( err, resultToken ) {
+            if ( err ) res.status(401).send({ message: 'Unauthorized !' })
+            if ( resultToken ) {
+                console.log(resultToken)
+                try {
+                    let getDataProfile = await ProfileModel
+                    .findOne({ username: resultToken.username })
+                    
+                    res.status(200).send({
+                        message: 'Successfull to get data profil!',
+                        statusCode: 200,
+                        results: getDataProfile
+                    })
+                } catch (error) {
+                    res.status(500).send({ message: 'Something error while getting data!'})
+                }
+            }
+        })
+    }
 }
 
 // module.exports = Login // export 1 function

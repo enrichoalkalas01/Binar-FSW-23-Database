@@ -1,8 +1,10 @@
 const Express = require('express')
 const Morgan = require('morgan')
+const Cors = require('cors')
 const PORT = 7777
 const App = Express()
 
+App.use(Cors())
 App.use(Express.static('public')) // berfungsi untuk membaca folder public
 App.use(Express.json()) // berfungsi untuk menerima data JSON dari FRONT END / Request
 App.use(Express.urlencoded({ extended: true })) // berfungsi untuk menerima data form urlencoded FRONT END / Request

@@ -7,7 +7,8 @@ var Schema = new Mongoose.Schema({
     lose: { type: Number },
     type_player: { type: String },
     level: { type: Number },
-    date_time: { type: Date }
+    date_time: { type: Date },
+    // score: { type: Mongoose.Types.ObjectId, ref: "GameHistory" }
 })
 
 const GameTotalScore = Mongoose.model('GameTotalScore', Schema)
