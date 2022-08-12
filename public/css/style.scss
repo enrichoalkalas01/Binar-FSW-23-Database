@@ -1,0 +1,28 @@
+@import './Component/_Navigation.scss';
+@import './Component/_Homepages.scss';
+@import './Component/Product.scss';
+
+#parent {
+    background-color: grey;
+    .child {
+        position: absolute;
+    }
+    
+    .block {
+        position: relative;
+        &.block-1 {
+            position: relative;
+            &.block-active {
+                position: relative;
+                @media screen and (max-width: 768px) {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+
+    .child:nth-child(1) {
+        background-color: aliceblue;
+    }
+    position: relative;
+}

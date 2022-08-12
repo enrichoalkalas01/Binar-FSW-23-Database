@@ -4,7 +4,7 @@ const ConnectDB = async () => {
     try {
         // MongoDB Connection
         const Conn = await Mongoose.connect(
-            'mongodb+srv://enrichobinarlearn:12345@learnmongodb.bqbx0.mongodb.net/game_db?retryWrites=true&w=majority',
+            process.env.MONGO_URI_CONNECTION,
             { useNewUrlParser: true, useUnifiedTopology: true }
         )
 

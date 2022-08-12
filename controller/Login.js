@@ -1,7 +1,7 @@
 const { response } = require('express');
 const { Sequelize } = require('sequelize');
 const Cryptr = require('cryptr');
-const SecretKey = 'SecretKey'
+const SecretKey = process.env.SecretKey
 const CryptrConverter = new Cryptr(SecretKey);
 const JWT = require('jsonwebtoken')
 

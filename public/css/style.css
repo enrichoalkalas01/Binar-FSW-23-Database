@@ -1,0 +1,38 @@
+#navigation {
+  position: relative;
+}
+
+#homepages {
+  position: relative;
+}
+
+#product {
+  position: relative;
+}
+
+#parent {
+  background-color: grey;
+  position: relative;
+}
+#parent .child {
+  position: absolute;
+}
+#parent .block {
+  position: relative;
+}
+#parent .block.block-1 {
+  position: relative;
+}
+#parent .block.block-1.block-active {
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  #parent .block.block-1.block-active {
+    font-size: 24px;
+  }
+}
+#parent .child:nth-child(1) {
+  background-color: aliceblue;
+}
+
+/*# sourceMappingURL=style.css.map */

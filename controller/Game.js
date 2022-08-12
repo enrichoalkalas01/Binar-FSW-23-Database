@@ -49,6 +49,14 @@ exports.GetScore = async (req, res) => {
                     foreignField: 'user_id',
                     as: 'score_history'
                 }
+            },
+            {
+                $lookup: {
+                    from: 'gamehistories',
+                    localField: 'user_id',
+                    foreignField: 'user_id',
+                    as: 'score_history'
+                }
             }
         ])
 

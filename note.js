@@ -150,4 +150,164 @@
     - Hengkie
     - Peter 4
 
+    async function getData() {
+        try {
+            let data = await fetch('https://pse.kominfo.go.id/static/json-static/LOKAL_TERDAFTAR/0.json?page[page]=1&page[limit]=10&filter[search_term]=')
+            console.log(data.json())
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
+    fetch('https://pse.kominfo.go.id/static/json-static/LOKAL_TERDAFTAR/0.json?page[page]=1&page[limit]=10&filter[search_term]=')
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+
+
+    Tahapan Pembuatan Aplikasi :
+    - Design UI / UX ( Alur Website )
+        - Rumusan Apa yang ingin dibut
+        - product dijual ( jaket, pakaian, electronic, tanaman )
+        - bisnis model
+        - target market / target user
+
+    - Developing Architecture
+        - Structure Database ( each data )
+        - Structure Application
+            - Front End Architecture & Structure
+            - Back End Architecture & Structure
+        - Server Architecture ( FE & BE )
+        - Data Transfer
+        - Calculation Cost
+
+
+    response_data: {
+        username: 'sasuke',
+        email: 'sasuke@gmail.com',
+        fullname: 'sasuke awe awe',
+        age: 17,
+        type_user: 0, // 0 berarti super admin
+        token: "0ai3nf09asnflkdsn-a49nafdnx-as49nfoliksd",
+        refreshToken: "0ai3nf09asnflkdsn-a49nafdnx-as49nfoliksd"
+    }
+
+    function getAnswerFunction() {
+        setTimeout(() => {
+            checkAnswerApiP2()
+            if ( checkAnswerApiP2 === true ) return false
+            else getAnswerFunction()
+        }, 2500)
+    }
+
+    function matchedAnswer(p1, p2) {
+        if p1 & p2 // bandingin, get hasil nya
+    }
+
+    getAnswerFunction()
+
+    setInterval(() => {
+        fungsi akan dijalankan terus salam 2,5 detik
+        console.log('jalan') // ini akan dijalan secara terus menerus tanpa jeda selama 2,5 detik
+    }, 2500)
+
+    - Record data p1 ke room game
+    - Recive from api room game
+    - repeat for player
+
+    class="block block-1 block-active"
+
+    Untuk Kurikulum ini sangant disayang kan sih dikarenakan penempatan materi nya yang kurang sesuai.
+    Karena sesuai dengan studi yang saya rasakan selama saya belajar dari 0 sampai sekarang dan juga apa yang dibutuhkan
+    para siswa dan juga perusahaan sangatlah tidak sesuai. materinya loncat" yang dimana walaupun materi nya FSW tetapi disini
+    kita tidak bisa memaksakan para pemula untuk langsung bisa menjadi Full Stack. Tetapi harus nya kita memberikan option yang
+    nyata terhadap para siswa nya agar bisa menjadi Front End ataupun Back End tanpa mengurangi pemahaman terhadap kedua nya.
+    Berikut urutan materi yang usulkan :
+    1. HTML
+        - All
+    2. CSS
+        - All Selector & Implementation in CSS
+        - CSS Properti & Implementation
+        - Layouting CSS ( Grid & Flex )
+        - Positioning CSS ( Relative, Absolute & Others )
+        - Psuedocode CSS
+        - CSS Framework ( Ini seharus nya di akhir sih, dikarenakan seharusnya siswa paham dulu dengan css sebelum masuk ke framework )
+    3. Git
+        - Simple Git Use
+        - Simple Git Tools ( Pakai github supaya bisa secara otomoatis jadi portofolio, klo gitlab itu nggk terlalu dilirik perusahaan )
+    4. Javascript
+        - Flowchart & Psuedocode flow
+        - Algorithm
+        - Basic Using Javascript
+        - Type Data ( all type data )
+        - Data Structure
+        - Arithmatic 
+        - Conditional ( if else & switch case )
+        - Looping ( harus bener" paham disini )
+        - Algorithm Implementation
+        - ( Mungkin disini ada yang terlewat saya lupa )
+        - DOM Implementation ( supaya murid bisa langsung tau kegunaan dari javascript nya langsung )
+        - Functional Programming ( disini sebelum masuk ke OOP wajib para siswa untuk bisa menerapkan functional programming nya )
+        - OOP dasar ( disarankan dasar dikarenakan untuk pelajaran seperti inherit dll itu membuat murid itu susah dalam mencoba mengerti nya )
+        - ( karena yang diharuskan para learner web apps itu paham implementation create / pembuatan web nya bukan implementation materi nya )
+        - Langsung Masuk ke yang hilang
+            - Data Implementation ( penggunaan data supaya bisa nampil di website )
+            - API implementation dengan menggunakan fetch
+            - Asnychronus Methods ( ini penting untuk di awal jangan di taro dibelakang! )
+            - Interactive API Implementation for building dynamic basic FRONT END
+        - ( Mungkin disini ada yang terlewat saya lupa )
+    5. Challange Implementation FRONT END ( Disini siswa diharuskan untuk mengerti dalam FRONT END Learning dulu baru ke BACK END )
+        - Disini saya mengharapkan agar diterapkan seperti ini dulu sebelum masuk ke framework.
+        dikarenakan materi framework itu akan lebih berbeda dibandingkan dengan front end biasa
+
+    6. Node JS
+        - Runtime Environment
+        - Inisialisasi Project Node.js & Module Concept
+        - Read dan Write File & HTTP Server using http core module
+        - Express
+        - Routing & View Engine & Static Public Folder
+        - Middle Ware + MVC & MRC Concept
+        - Rest API & Methods HTTP
+        - Integration With Front END ( CRUD Implementation ) ( Dashboard )
+        - Database Implementation With ORM or Tools Management ( RDBMS Mysql or MongoDB ) ( Lebih disarankan untuk MongoDB )
+        - Media Handling Implementation
+        - Authentication & Authorization with JsonWebToken ( Tidak ada implementasi Passport ya, supaya siswa dapat memhami alur dari basic )
+        - Simple Documentation API 
+        - Swagger ( Optional ) bisa digantikan sama POSTMAN Documentation
+        - Testing JS
+        - Deploying To Server ( heroku )
+
+    Optional antara FE or BE learning. Scrum Learning ( Sangant diharuskan sebelum masuk ke project challange )
+
+    7. React JS
+        - React Init
+        - Component Concept in js framework
+        - Class Component & Functional Component Concept
+        - State & Props Management
+        - React Routing & Folder Structure
+        - Redux Global State Management
+        - Integration API with Axios & Package Managements
+        - Next JS
+        - Deploying To Server ( netlify or heroku )
+        - ( Firebase sangat tidak disarankan dikarenakan sudah di isi dengan materi backend yang sudah di pelajari )
+
+    8. Project Implementation
+
+    // let i = 0
+    // setInterval(() => {
+    //     i += 1
+    //     console.log('interval ' + i)
+    // }, 100)
+
+    // function tester() {
+    //     setTimeout(() => {
+    //         i += 1
+    //         console.log('timeout ' + i)
+    //         if ( i < 10 ) tester()
+    //     }, 1000)
+    // }
+
+    // tester()
+
+    https://api.themoviedb.org/3/movie/search/movie
 */
