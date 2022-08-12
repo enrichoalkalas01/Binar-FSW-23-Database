@@ -145,4 +145,12 @@ Routes.post('/product/api', (req, res) => {
     res.send('ok')
 })
 
+const RoomController = require('../controller/Room')
+
+Routes.get('/game', (req, res) => {
+    res.render('game')
+})
+Routes.post('/create-room', RoomController.CreateRoom)
+Routes.get('/join-room', RoomController.JoinRoom)
+
 module.exports = Routes

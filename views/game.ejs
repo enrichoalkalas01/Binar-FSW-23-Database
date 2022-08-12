@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="player-1">
+            <h1>player 1</h1>
+            <span>who wins</span>
+        </div>
+        <div id="player-2">
+            <h1>player 2</h1>
+            <span>who wins</span>
+        </div>
+    </div>
+
+    <script>
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        const PlayerOneBoxName = document.querySelector("#player-1 h1")
+        const PlayerTwoBoxName = document.querySelector("#player-2 h1")
+
+        function checkRoomAndJoin(room, player, id) {
+            fetch(`/join-room?room=${ room }&player=${ player }&id=${ id }f`)
+            .then(response => response.json())
+            .then(result => {
+                let player1 = result.data.player1_data !== '' ? JSON.parse(result.data.player1_data) : null
+                let player2 = result.data.player2_data !== '' ? JSON.parse(result.data.player2_data) : null
+                if ( !player1 && !player2 ) {
+                    console.log('no player!')
+                } else if ( !player1 && player2 ) {
+                    PlayerOneBoxName.innerHTML = 'player 1'
+                    PlayerTwoBoxName.innerHTML = player2.player
+                } else if ( player1 && !player2 ) {
+                    PlayerOneBoxName.innerHTML = player1.player
+                    PlayerTwoBoxName.innerHTML = 'player 2'
+                } else {
+                    PlayerOneBoxName.innerHTML = player1.player
+                    PlayerTwoBoxName.innerHTML = player2.player
+                }
+
+                setTimeout(() => {
+                    checkRoomAndJoin(room, player, id)
+                }, 1000)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
+        checkRoomAndJoin(params.room, params.player, params.id)
+    </script>
+</body>
+</html>
